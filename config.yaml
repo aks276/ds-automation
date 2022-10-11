@@ -1,0 +1,16 @@
+# Name your project
+Name: Project
+
+type: classification
+# uncomment following if it's regression
+# type: regression
+
+path:
+  train_data: train.csv
+  # If data source is multiple files. Uncomment only what you have.
+  # test_data: path_to_test_data
+  # val_data: path_to_val_data
+
+# Name of data source to use for visualizations.
+# Same as in path (important)
+visualizations: train_data
