@@ -7,5 +7,5 @@ def read_csv_to_dataframe(config: dict):
     cells = []
     paths = config["path"]
     for data, path in paths.items():
-        cells.append(cell_creation.code_cell(f"{data} = pd.read_csv({path})\n"))
+        cells.append(cell_creation.code_cell(f"{data} = pd.read_csv('{path}')") )
     return cells

@@ -23,16 +23,14 @@ nb_cells.append(cell_creation.code_cell("import pandas as pd"))
 nb_cells.append(cell_creation.code_cell("import seaborn as sns"))
 
 #### Block for reading in the data
-nb_cells.append(inputs.read_csv_to_dataframe(config=config))
+nb_cells.extend(inputs.read_csv_to_dataframe(config=config))
 
 #### Block for statistical descriptions
-nb_cells.append(stats_descriptions.statistical_desciptions(config=config))
+nb_cells.extend(stats_descriptions.statistical_desciptions(config=config))
 
 #### Blocks for graphical descriptions
-nb_cells.append(gpd.graphical_descriptions(config=config))
+nb_cells.extend(gpd.graphical_descriptions(config=config))
 
-print(nb_cells)
+nb["cells"] = nb_cells
 
-# nb['cells'] = nb_cells
-
-# nbformat.write(nb, f"{config['Name']}.ipynb")
+nbformat.write(nb, f"{config['Name']}.ipynb")
