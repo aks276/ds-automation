@@ -5,6 +5,7 @@ import inputs
 import cell_creation
 import stats_descriptions
 import graphical_descriptions as gpd
+import models
 
 #### Reading the yaml config.
 with open("config.yaml", "r") as yaml_config:
@@ -16,7 +17,8 @@ nb = nbformat.v4.new_notebook()
 nb_cells = []
 
 #### install libraries
-nb_cells.append(cell_creation.code_cell("!pip install pandas seaborn"))
+nb_cells.append(cell_creation.code_cell("!pip install pandas seaborn auto-sklearn"))
+nb_cells.append(cell_creation.code_cell("!pip install scikit-learn==1.0.2"))
 
 #### import libraries
 nb_cells.append(cell_creation.code_cell("import pandas as pd"))
@@ -30,6 +32,9 @@ nb_cells.extend(stats_descriptions.statistical_desciptions(config=config))
 
 #### Blocks for graphical descriptions
 nb_cells.extend(gpd.graphical_descriptions(config=config))
+
+#### Blocks for modelling
+nb_cells.extend(models.get_models(config=config))
 
 nb["cells"] = nb_cells
 

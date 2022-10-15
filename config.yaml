@@ -11,6 +11,10 @@ path:
   # test_data: path_to_test_data
   # val_data: path_to_val_data
 
+target_col: "Survived"
+
 # Name of data source to use for visualizations.
 # Same as in path (important)
 visualizations: train_data
+
+test_split: 0.2
