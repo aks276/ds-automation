@@ -14,13 +14,14 @@ def get_models(config):
     )
     if config["type"] == "classification":
         cells.append(cell_creation.code_cell("import autosklearn.classification"))
+        cells.append(cell_creation.code_cell("automl = autosklearn.classification.AutoSklearnClassifier()"))
     elif config["type"] == "regression":
-        cells.append(cell_creation("import autosklearn.regression"))
+        cells.append(cell_creation.code_cell("import autosklearn.regression"))
+        cells.append(cell_creation.code_cell("automl = autosklearn.regression.AutoSklearnRegressor()"))
     else:
         NotImplementedError(f"{config['type']} not yet implemented.")
     cells.extend(data.get_data_cells(config=config))
     cells.append(cell_creation.md_cell("#### Model Building"))
-    cells.append(cell_creation.code_cell("automl = autosklearn.classification.AutoSklearnClassifier()"))
     cells.append(cell_creation.code_cell("automl.fit(X_train, y_train)"))
 
     cells.append(cell_creation.md_cell("Performance Measures"))
