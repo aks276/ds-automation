@@ -6,6 +6,7 @@ import cell_creation
 import stats_descriptions
 import graphical_descriptions as gpd
 import models
+import inference
 
 #### Reading the yaml config.
 with open("config.yaml", "r") as yaml_config:
@@ -35,6 +36,8 @@ nb_cells.extend(gpd.graphical_descriptions(config=config))
 
 #### Blocks for modelling
 nb_cells.extend(models.get_models(config=config))
+
+nb_cells.extend(inference.get_inference(config=config))
 
 nb["cells"] = nb_cells
 
